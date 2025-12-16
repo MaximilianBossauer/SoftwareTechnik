@@ -14,15 +14,12 @@ int main(void)
     for (Count = 1; Count < Input; Count++)
     {
         printf("%d\n", FibonacciNumbers[Count]);
-        sum += FibonacciNumbers[Count];
         int NextNumber = FibonacciNumbers[Count] + FibonacciNumbers[Count - 1];
         if (NextNumber > Input)
         {
             break;
         }
     }
-    printf("%d", sum);
-    return (EXIT_SUCCESS);
 }
 
 int UserInput(int Input)
