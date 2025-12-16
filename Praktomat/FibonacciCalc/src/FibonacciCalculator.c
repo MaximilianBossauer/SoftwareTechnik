@@ -6,7 +6,6 @@ int UserInput(int Input);
 
 int main(void)
 {
-    int sum;
     int Input = UserInput(Input);
     int Count = Input;
     int FibonacciNumbers[Input];
