@@ -1,0 +1,17 @@
+run: build link
+	./build/out
+
+link: compile1 compile2
+	gcc ./build/1_merry_christmas.o ./build/out.o -o ./build/out
+
+compile1: ./src/1_merry_christmas.c
+	gcc -Wall -g -c ./src/1_merry_christmas.c -o ./build/1_merry_christmas.o
+
+compile2: ./src/out.c
+	gcc -Wall -g -c ./src/out.c -o ./build/out.o
+
+build:
+	mkdir build
+
+clear:
+	rm -r build
