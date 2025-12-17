@@ -6,7 +6,7 @@ converter_build: build ./build/NumberConverter.o
 	gcc ./build/NumberConverter.o -o ./build/NumberConverter
 
 #Compiler:
-./build/NumberConverter.o: ./src/NumberConverter.c 
+./build/NumberConverter.o: ./src/NumberConverter.c build
 	gcc -c ./src/NumberConverter.c -o ./build/NumberConverter.o
 
 build:
