@@ -11,6 +11,6 @@ primcalc_build: build ./build/PrimeCalculator.o
 
 build:
 	mkdir ./build
-2
+
 clean:
 	rm -r build

@@ -12,7 +12,6 @@ int main(void)
     int Input = UserInput(Input);
     int FibonacciNumbers[Input];
     FibonacciCalculator(FibonacciNumbers, Input);
-
     Output(FibonacciNumbers, Input);
 }
 
