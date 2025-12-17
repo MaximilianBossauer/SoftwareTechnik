@@ -3,7 +3,7 @@
 
 int UserInput();
 void Extract(int UserNumber, int *hundrets, int *tens, int *ones);
-int ConvertandOutput(int UserNumber,int hundrets, int tens, int ones, char *words[]);
+void ConvertandOutput(int UserNumber,int hundrets, int tens, int ones, char *words[]);
 
 
 
@@ -38,7 +38,7 @@ void Extract(int UserNumber, int *hundrets, int *tens, int *ones)
    *ones = UserNumber - *hundrets * 100 - *tens * 10;
 }
 
-int ConvertandOutput(int UserNumber, int hundrets, int tens, int ones, char *words[])
+void ConvertandOutput(int UserNumber, int hundrets, int tens, int ones, char *words[])
 {
    if (UserNumber >= 100)
    {

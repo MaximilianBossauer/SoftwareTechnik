@@ -1,14 +1,12 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int FibonacciCalculator(int FibonacciNumbers[], int Input);
+void FibonacciCalculator(int FibonacciNumbers[], int Input);
 int UserInput(int Input);
-int Output(int FibonacciNumbers[], int Input);
+void Output(int FibonacciNumbers[], int Input);
 
 int main(void)
 {
-    int SumEven;
-    int SumUneven;
     int Input = UserInput(Input);
     int FibonacciNumbers[Input];
     FibonacciCalculator(FibonacciNumbers, Input);
@@ -21,7 +19,7 @@ int UserInput(int Input)
     scanf("%d", &Input);
     return Input;
 }
-int FibonacciCalculator(int FibonacciNumbers[], int Input)
+void FibonacciCalculator(int FibonacciNumbers[], int Input)
 {
     int NextNumber = 0;
     FibonacciNumbers[0] = 0;
@@ -38,7 +36,7 @@ int FibonacciCalculator(int FibonacciNumbers[], int Input)
     }
 }
 
-int Output(int FibonacciNumbers[], int Input)
+void Output(int FibonacciNumbers[], int Input)
 {
     int NextNumber = 0;
     int i = 2;
