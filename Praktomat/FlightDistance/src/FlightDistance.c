@@ -16,6 +16,7 @@ void RadiantCalculation(double deplatDecimal, double deplongDecimal, double arrl
 double sinDeg(double degrees);
 double cosDeg(double degrees);
 void DistanceCalculation(double sinArrLat, double sinDepLat, double cosArrLat, double cosDepLat, double cosDepArrLong, double *Distance);
+void Output (double Distance);
 
 int main(void)
 {
@@ -25,6 +26,7 @@ int main(void)
     InputConvert(&deplatDecimal, &deplongDecimal, &arrlatDecimal, &arrlongDecimal);
     RadiantCalculation(deplatDecimal, deplongDecimal, arrlatDecimal, arrlongDecimal, &sinArrLat, &sinDepLat, &cosArrLat, &cosDepLat, &cosDepArrLong);
     DistanceCalculation(sinArrLat, sinDepLat, cosArrLat, cosDepLat, cosDepArrLong, &Distance);
+    Output(Distance);
 }
 void InputConvert(double *deplatDecimal, double *deplongDecimal, double *arrlatDecimal, double *arrlongDecimal)
 {
@@ -86,6 +88,9 @@ double cosDeg(double degrees)
 void DistanceCalculation(double sinArrLat, double sinDepLat, double cosArrLat, double cosDepLat, double cosDepArrLong, double* Distance)
 {
 *Distance = EARTH_RAD * acos(sinArrLat*sinDepLat + cosArrLat * cosDepLat * cosDepArrLong);
-printf("%lf", *Distance);
+}
+
+void Output (double Distance){
+    printf("Flight Distance in km is %.2f", Distance);
 }
 
