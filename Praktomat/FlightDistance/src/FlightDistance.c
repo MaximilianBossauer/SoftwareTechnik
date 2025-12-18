@@ -2,21 +2,21 @@
 #include <stdio.h>
 #include <math.h>
 
-void UserInput(void);
+/*30°20'10'25°20'34''67°89'32''48°30'00''*/
+
+void InputConvert(double* deplatDecimal, double* deplongDecimal, double* arrlatDecimal, double* arrlongDecimal);
 double DegreeCalculation(double Degree, double Minutes, double Seconds);
+void RadiantCalculation(double deplatDecimal, double deplongDecimal, double arrlatDecimal, double arrlongDecimal);
+double sinDeg(double deplatDecimal, double deplongDecimal, double arrlatDecimal, double arrlongDecimal);
+double cosDeg(double deplatDecimal, double deplongDecimal, double arrlatDecimal, double arrlongDecimal);
 
 int main(void)
 {
-    double Degree;
-     double Minutes;
-      double Seconds;
-      double deplatDecimal,deplongDecimal,arrlatDecimal,arrlatDecimal;
-    UserInput();
-    DegreeCalculation(Degree, Minutes, Seconds);
-    printf("%lf",deplatDecimal);
+    double deplatDecimal, deplongDecimal, arrlatDecimal, arrlongDecimal;
+    InputConvert(&deplatDecimal, &deplongDecimal, &arrlatDecimal, &arrlongDecimal);
+    RadiantCalculation(deplatDecimal, deplongDecimal, arrlatDecimal, arrlongDecimal);
 }
-
-void UserInput(void)
+void InputConvert(double* deplatDecimal, double* deplongDecimal, double* arrlatDecimal, double* arrlongDecimal)
 {
     struct Coordinate
     {
@@ -40,14 +40,28 @@ void UserInput(void)
           &arrlong.Degree, &Symbols[9],
           &arrlong.Minutes, &Symbols[10],
           &arrlong.Seconds, &Symbols[11], &Symbols[15]);
-    double deplatDecimal = DegreeCalculation(deplat.Degree, deplat.Minutes, deplat.Seconds);
-    double deplongDecimal = DegreeCalculation(deplong.Degree, deplong.Minutes, deplong.Seconds);
-    double arrlatDecimal = DegreeCalculation(arrlat.Degree, arrlat.Minutes, arrlat.Seconds);
-    double arrlongDecimal = DegreeCalculation(arrlong.Degree, arrlong.Minutes, arrlong.Seconds);
-return deplatDecimal,deplongDecimal,arrlatDecimal,arrlongDecimal;
-}
+
+    *deplatDecimal = DegreeCalculation(deplat.Degree, deplat.Minutes, deplat.Seconds);
+    *deplongDecimal = DegreeCalculation(deplong.Degree, deplong.Minutes, deplong.Seconds);
+    *arrlatDecimal = DegreeCalculation(arrlat.Degree, arrlat.Minutes, arrlat.Seconds);
+    *arrlongDecimal = DegreeCalculation(arrlong.Degree, arrlong.Minutes, arrlong.Seconds);
+    }
+
+
 
 double DegreeCalculation(double Degree, double Minutes, double Seconds)
 {
     return Degree + Minutes / 60 + Seconds / 3600;
+}
+
+void RadiantCalculation(double deplatDecimal, double deplongDecimal, double arrlatDecimal, double arrlongDecimal){
+
+
+}
+
+double sinDeg(double deplatDecimal, double deplongDecimal, double arrlatDecimal, double arrlongDecimal){
+
+}
+double cosDeg(double deplatDecimal, double deplongDecimal, double arrlatDecimal, double arrlongDecimal){
+    
 }
