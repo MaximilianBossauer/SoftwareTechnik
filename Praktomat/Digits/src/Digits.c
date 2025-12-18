@@ -7,12 +7,12 @@ long long PowerMod(long long Base, long long Exponent);
 long long Calculation(long long Input);
 void Output(long long sum);
 
-long long main(void)
+int main(void)
 {
     long long Input = UserInput();
     long long sum = Calculation(Input);
     Output(sum);
-    return EXIT_SUCCESS;
+    return 0;
 }
 
 long long UserInput(void)
