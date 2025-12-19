@@ -17,13 +17,19 @@ typedef struct
 } Airport;
 
 const Airport *GetAirports(int *count);
+void UserInput (int *latitude, int *longitude, int *UserPressure, int *UserTemp);
+
 
 int main(void)
 {
-    int AirportCount;
+    int AirportCount, latitude, longitude, UserPressure, UserTemp;
     const Airport *airports = GetAirports(&AirportCount);
-    printf("%s \n %d", airports[2].name, airports[3].height);
+    UserInput (&latitude, &longitude, &UserPressure, &UserTemp);
+    printf ("%d %d %d %d", latitude, longitude, UserTemp, UserPressure);
+
+
 }
+
 
 const Airport *GetAirports(int *AirportCount)
 {
@@ -35,4 +41,9 @@ const Airport *GetAirports(int *AirportCount)
     };
     *AirportCount = sizeof(airports) / sizeof(airports[0]);
     return airports;
+}
+
+void UserInput (int *latitude, int *longitude, int *UserPressure, int *UserTemp){
+    printf("Please enter latitude, longitude, UserTemp and UserPressure for the airport:");
+    scanf("%d %d %d %d", latitude, longitude, UserTemp, UserPressure);
 }
