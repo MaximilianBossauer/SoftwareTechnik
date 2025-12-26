@@ -7,7 +7,7 @@ void Output(long long HighestPrim, long long Input);
 
 int main(void)
 {
-    long long Input = UserInput();
+    long long Input = UserInput(); /*Usage of long longh if User enters very big numbers*/
     long long HighestPrim = PrimeFactors(Input);
     Output(HighestPrim, Input);
 }
@@ -17,7 +17,7 @@ long long UserInput(void)
     long long Input = 0;
     printf("Please enter the number which should be factorized: ");
     scanf("%lld", &Input);
-    if (Input <= 3)
+    if (Input <= 3) /*Entered Number must be bigger than 3 since all numbers smaller 3 dont consist of any prime-factors*/
     {
         printf("The entered number is invalid!");
         exit(0);
@@ -33,11 +33,11 @@ long long PrimeFactors(long long Input)
     {
         Number = Number / 2;
     }
-    for (int n = 3; n * n <= Number; n = n + 2)
+    for (int n = 3; n * n <= Number; n = n + 2) /*for-loop beginning with 3, so it can cycle through every possible prime-number, as all of them can be described by n = n+2.*/
     {
-        while (Number % n == 0)
+        while (Number % n == 0) /*while-loop dividing the left part of the number with the actual divider given throught the for-loop until it isnt possible to divide clean*/
         {
-            HighestPrim = n;
+            HighestPrim = n; /*Saving the used divider as highest primeefactor*/
             Number = Number / n;
         }
     }

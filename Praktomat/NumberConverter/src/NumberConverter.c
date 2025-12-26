@@ -3,13 +3,11 @@
 
 int UserInput();
 void Extract(int UserNumber, int *hundrets, int *tens, int *ones);
-void ConvertandOutput(int UserNumber,int hundrets, int tens, int ones, char *words[]);
-
-
+void ConvertandOutput(int UserNumber, int hundrets, int tens, int ones, char *words[]);
 
 int main(void)
 {
-   char *words[] = {"ZERO", "ONE", "TWO", "THREE", "FOUR", "FIVE", "SIX", "SEVEN", "EIGHT", "NINE"};
+   char *words[] = {"ZERO", "ONE", "TWO", "THREE", "FOUR", "FIVE", "SIX", "SEVEN", "EIGHT", "NINE"}; /*Use of Char for easy call and efficient use*/
    int UserNumber;
    int hundrets, tens, ones;
    UserNumber = UserInput();
@@ -23,7 +21,7 @@ int UserInput(void)
    int UserNumber;
    printf("Please enter a number between 0 and 999: ");
    scanf("%d", &UserNumber);
-   if (UserNumber < 0 || UserNumber > 999)
+   if (UserNumber < 0 || UserNumber > 999) /*If-loop to check if wrong Input was entered*/
    {
       printf("INVALID, NUMBER MUST BE BETWEEN  0 and 999\nTry again\n");
       exit(EXIT_SUCCESS);
@@ -31,9 +29,9 @@ int UserInput(void)
    return UserNumber;
 }
 
-void Extract(int UserNumber, int *hundrets, int *tens, int *ones)
+void Extract(int UserNumber, int *hundrets, int *tens, int *ones) /*Function to convert the given number in three singular numbers*/
 {
-   *hundrets = UserNumber / 100;
+   *hundrets = UserNumber / 100; 
    *tens = (UserNumber - *hundrets * 100) / 10;
    *ones = UserNumber - *hundrets * 100 - *tens * 10;
 }
