@@ -16,14 +16,16 @@ int main(void)
 }
 
 long long UserInput(void)
+/*Reads the user input*/
 {
     long long Input;
-    printf("Please enter the highest value, which will be selected:");
+    printf("Please enter the highest value, which will be selected:\n");
     scanf("%lld", &Input);
     return Input;
 }
 
 long long Calculation(long long Input)
+/**/
 {
     long long sum = 0;
     if (Input <= 14) /*below the number 15 the sum doesnt exceed the long long variable*/
@@ -43,7 +45,7 @@ long long Calculation(long long Input)
                 sum += PowerMod(Count, Count);
             }
         }
-        sum = sum % 100000000; /*Reducing the sum to the lasz 8 digits*/
+        sum = sum % 100000000; /*Reducing the sum to the last 8 digits*/
         return sum;
     }
 }

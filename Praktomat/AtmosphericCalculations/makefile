@@ -13,4 +13,4 @@ build:
 	mkdir ./build
 
 clean:
-	rm -r build
+	rm -r buil

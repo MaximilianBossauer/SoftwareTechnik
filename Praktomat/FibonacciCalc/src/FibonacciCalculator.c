@@ -19,7 +19,7 @@ long long UserInput(void)
 /*Reads the maxim allowed fibonacci value the user wants*/
 {
     long long Input;
-    printf("Please enter the max value for calculating the even- and uneven sum of fibonaccinumbers: ");
+    printf("Please enter the max value for calculating the even- and uneven sum of fibonacci-numbers: ");
     scanf("%lld", &Input);
     return Input;
 }
@@ -45,7 +45,7 @@ void SumCalculation(long long FibonacciNumbers[], long long Input, long long *Su
 /*Differentiates between odd and even fibonacci numbers and calculates the sum of each*/
 {
     long long NextNumber = 0;
-    long long i = 1;
+    long long i = 2;
     *SumEven = 0;
     *SumOdd = 0;
     while (NextNumber <= Input) /*While-loop cycling through all previously calculated fibonacci-numbers*/
