@@ -19,13 +19,13 @@ long long UserInput(void)
 /*Reads the user input*/
 {
     long long Input;
-    printf("Please enter the highest value, which will be selected:\n");
+    printf("Please enter the highest value, which will be selected: ");
     scanf("%lld", &Input);
     return Input;
 }
 
 long long Calculation(long long Input)
-/**/
+/*calculates the digits of the number, differentiationg between number smaller or bigger than 14 to avoid overflow of the variable, also making it less precise*/
 {
     long long sum = 0;
     if (Input <= 14) /*below the number 15 the sum doesnt exceed the long long variable*/
@@ -51,6 +51,7 @@ long long Calculation(long long Input)
 }
 
 long long PowerOf(long long Base, long long Exponent)
+/*Calucationf k to the power of k for low inputs (Smaller 14)*/
 {
     long long Result = 1;
     for (int i = 0; i < Exponent; i++) /* for-loop calculating the k to the power of k*/
@@ -60,6 +61,7 @@ long long PowerOf(long long Base, long long Exponent)
     return Result;
 }
 long long PowerMod(long long Base, long long Exponent) 
+/*Calucationf k to the power of k for high inputs (bigger 14), and using the modulo directly to avoid variable overflow*/
 {
     long long Result = 1;
     for (int i = 0; i < Exponent; i++) /*for loop calculating k to the power of k*/
@@ -71,6 +73,7 @@ long long PowerMod(long long Base, long long Exponent)
 }
 
 void Output(long long sum)
+/*prints the given number and the last 8 digits*/
 {
     printf("The last digits of the series are %lld", sum);
 }
