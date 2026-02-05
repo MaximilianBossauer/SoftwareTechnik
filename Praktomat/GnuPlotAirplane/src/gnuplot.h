@@ -3,7 +3,7 @@
 
 void GnuPlotOpen(char * Title, char * filename);
 
-void GnuplotClose(void);
+void GnuPlotClose(void);
 
 void GnuPlotValue(float v1, float v2);
 
