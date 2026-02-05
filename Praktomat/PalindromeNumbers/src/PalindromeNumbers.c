@@ -5,6 +5,7 @@ void UserInput(int *Number1, int *Number2);
 void SortingAndMultiplying(int *BigNumber, int *SmallNumber, int *Palindrome, int Number1, int Number2);
 int Extract(int Multiplied);
 int PalindromeCheckerSmall(int TenThousands, int Thousands, int Hundreds, int Tens, int Ones);
+int PalindromeCheckerBig(int HundredThousands, int TenThousands, int Thousands, int Hundreds, int Tens, int Ones);
 
 int main(void)
 {
@@ -89,7 +90,7 @@ int Extract(int Multiplied)
         Hundreds = (Multiplied - HundredThousands * 100000 - TenThousands * 10000 - Thousands * 1000) / 100;
         Tens = (Multiplied - HundredThousands * 100000 - TenThousands * 10000 - Thousands * 1000 - Hundreds * 100) / 10;
         Ones = Multiplied - HundredThousands * 100000 - TenThousands * 10000 - Thousands * 1000 - Hundreds * 100 - Tens * 10;
-        YAsss = PalindromeCheckerSmall(TenThousands, Thousands, Hundreds, Tens, Ones);
+        YAsss = PalindromeCheckerBig(HundredThousands, TenThousands, Thousands, Hundreds, Tens, Ones);
         if (YAsss == 1)
         {
             return Multiplied;
@@ -104,6 +105,15 @@ int Extract(int Multiplied)
 int PalindromeCheckerSmall(int TenThousands, int Thousands, int Hundreds, int Tens, int Ones)
 {
     if ((TenThousands == Ones) && (Thousands == Tens))
+        return 1;
+    else
+    {
+        return 0;
+    }
+}
+int PalindromeCheckerBig(int HundredThousands, int TenThousands, int Thousands, int Hundreds, int Tens, int Ones)
+{
+    if ((HundredThousands == Ones) && (TenThousands == Tens) && (Thousands == Hundreds))
         return 1;
     else
     {
