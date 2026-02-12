@@ -2,13 +2,13 @@
 #include <stdio.h>
 
 void UserInput(int *message);
-void Extract(int message, int *ID, int *DLC, int *Data1, int *Data2, int *Data3);
+void ExtractAndPrint(int message, int *ID, int *DLC, int *Data1, int *Data2, int *Data3);
 
 int main(void)
 {
     int message, ID, DLC, Data1, Data2, Data3;
     UserInput(&message);
-    Extract(message, &ID, &DLC, &Data1, &Data2, &Data3);
+    ExtractAndPrint(message, &ID, &DLC, &Data1, &Data2, &Data3);
     return EXIT_SUCCESS;
 }
 
@@ -18,7 +18,8 @@ void UserInput(int *message)
     scanf("%x", message);
 }
 
-void Extract(int message, int *ID, int *DLC, int *Data1, int *Data2, int *Data3)
+void ExtractAndPrint(int message, int *ID, int *DLC, int *Data1, int *Data2, int *Data3)
+/*Extracts the different bits by moving the hexadecimals and shortening them to the needed lenght */
 {
     *ID = (message >> 26) & 0x3F;
     printf("ID: %d \n", *ID);
