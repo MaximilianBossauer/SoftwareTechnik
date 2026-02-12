@@ -4,11 +4,11 @@ run_GnuPlot: GnuPlotAirplane_build
 GnuPlotAirplane_build: build ./build/GnuPlotAirplane.o ./build/gnuplot.o
 	gcc ./build/GnuPlotAirplane.o ./build/gnuplot.o -o ./build/GnuPlotAirplane
 
-./build/GnuPlotAirplane.o: GnuPlotAirplane.c build
-	gcc -c GnuPlotAirplane.c -o ./build/GnuPlotAirplane.o
+./build/GnuPlotAirplane.o: ./src/GnuPlotAirplane.c build
+	gcc -c ./src/GnuPlotAirplane.c -o ./build/GnuPlotAirplane.o
 
-./build/gnuplot.o: gnuplot.c build
-	gcc -c gnuplot.c -o ./build/gnuplot.o
+./build/gnuplot.o: ./src/gnuplot.c build
+	gcc -c ./src/gnuplot.c -o ./build/gnuplot.o
 
 build:
 	mkdir ./build
