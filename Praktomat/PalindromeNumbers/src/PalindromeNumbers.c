@@ -2,20 +2,18 @@
 #include <stdlib.h>
 
 void UserInput(int *Number1, int *Number2);
-void SortingAndMultiplying(int *BigNumber, int *SmallNumber, int *Product1, int *Product2, int *Palindrome, int Number1, int Number2);
-int Extract(int Multiplied);
+void SortingAndMultiplying(int *BigNumber, int *SmallNumber, int *Factor1, int *Factor2, int *PalindromeNumber, int Number1, int Number2);
+int ExtractDigits(int MultipliedNumbers);
 int PalindromeCheckerSmall(int TenThousands, int Thousands, int Hundreds, int Tens, int Ones);
 int PalindromeCheckerBig(int HundredThousands, int TenThousands, int Thousands, int Hundreds, int Tens, int Ones);
-void Output(int Palindrome, int Product1, int Product2);
+void Output(int PalindromeNumber, int Factor1, int Factor2);
 void NoPalindrome(void);
 int main(void)
 {
-    int Number1, Number2, BigNumber, SmallNumber, Palindrome, Product1, Product2;
+    int Number1, Number2, BigNumber, SmallNumber, PalindromeNumber, Factor1, Factor2;
     UserInput(&Number1, &Number2);
-    /* printf("%d %d", Number1, Number2);*/
-    SortingAndMultiplying(&BigNumber, &SmallNumber, &Palindrome, &Product1, &Product2, Number1, Number2);
-    /* printf("%d", Palindrome);*/
-    Output(Palindrome, Product1, Product2);
+    SortingAndMultiplying(&BigNumber, &SmallNumber, &PalindromeNumber, &Factor1, &Factor2, Number1, Number2);
+    Output(PalindromeNumber, Factor1, Factor2);
 }
 
 void UserInput(int *Number1, int *Number2)
@@ -28,9 +26,9 @@ void UserInput(int *Number1, int *Number2)
         exit(EXIT_SUCCESS);
     }
 }
-void SortingAndMultiplying(int *BigNumber, int *SmallNumber, int *Palindrome, int *Product1, int *Product2, int Number1, int Number2)
+void SortingAndMultiplying(int *BigNumber, int *SmallNumber, int *PalindromeNumber, int *Factor1, int *Factor2, int Number1, int Number2)
 {
-    int Multiplied = 0;
+    int MultipliedNumbers = 0;
     int BiggestPalindrome = 0;
     if (Number1 > Number2)
     {
@@ -45,19 +43,21 @@ void SortingAndMultiplying(int *BigNumber, int *SmallNumber, int *Palindrome, in
     }
     int Count1 = *SmallNumber;
     while (Count1 <= *BigNumber)
+    /*While loop that counts through the smaller number*/
     {
         int Count2 = *SmallNumber;
         while (Count2 <= *BigNumber)
+        /*While loop that counts through until bigger number and multiplies them with the smaller number*/
         {
-            Multiplied = Count1 * Count2;
-            /* printf("%d * %d\n", Count1, Count2);*/
+            MultipliedNumbers = Count1 * Count2;
 
-            *Palindrome = Extract(Multiplied);
-            if (*Palindrome != 0 && BiggestPalindrome < *Palindrome)
+            *PalindromeNumber = ExtractDigits(MultipliedNumbers);
+            if (*PalindromeNumber != 0 && BiggestPalindrome < *PalindromeNumber)
+            /*Compares current found Palindrome with the biggest found Palindrome and remembers both factors if a bigger Palindrome is found*/
             {
-                BiggestPalindrome = *Palindrome;
-                *Product1 = Count1;
-                *Product2 = Count2;
+                BiggestPalindrome = *PalindromeNumber;
+                *Factor1 = Count1;
+                *Factor2 = Count2;
             }
             Count2++;
         }
@@ -70,29 +70,25 @@ void SortingAndMultiplying(int *BigNumber, int *SmallNumber, int *Palindrome, in
     }
     else
     {
-        *Palindrome = BiggestPalindrome;
+        *PalindromeNumber = BiggestPalindrome;
     }
 }
-void NoPalindrome(void)
-{
-    printf("No palindrome found!");
-}
 
-int Extract(int Multiplied)
+int ExtractDigits(int MultipliedNumbers)
 {
-    int YAsss = 0;
+    int CheckerVariable = 0;
     int HundredThousands, TenThousands, Thousands, Hundreds, Tens, Ones;
-    if (Multiplied <= 100000)
+    if (MultipliedNumbers <= 100000)
     {
-        TenThousands = Multiplied / 10000;
-        Thousands = (Multiplied - TenThousands * 10000) / 1000;
-        Hundreds = (Multiplied - TenThousands * 10000 - Thousands * 1000) / 100;
-        Tens = (Multiplied - TenThousands * 10000 - Thousands * 1000 - Hundreds * 100) / 10;
-        Ones = Multiplied - TenThousands * 10000 - Thousands * 1000 - Hundreds * 100 - Tens * 10;
-        YAsss = PalindromeCheckerSmall(TenThousands, Thousands, Hundreds, Tens, Ones);
-        if (YAsss == 1)
+        TenThousands = MultipliedNumbers / 10000;
+        Thousands = (MultipliedNumbers - TenThousands * 10000) / 1000;
+        Hundreds = (MultipliedNumbers - TenThousands * 10000 - Thousands * 1000) / 100;
+        Tens = (MultipliedNumbers - TenThousands * 10000 - Thousands * 1000 - Hundreds * 100) / 10;
+        Ones = MultipliedNumbers - TenThousands * 10000 - Thousands * 1000 - Hundreds * 100 - Tens * 10;
+        CheckerVariable = PalindromeCheckerSmall(TenThousands, Thousands, Hundreds, Tens, Ones);
+        if (CheckerVariable == 1)
         {
-            return Multiplied;
+            return MultipliedNumbers;
         }
         else
         {
@@ -101,16 +97,16 @@ int Extract(int Multiplied)
     }
     else
     {
-        HundredThousands = Multiplied / 100000;
-        TenThousands = (Multiplied - HundredThousands * 100000) / 10000;
-        Thousands = (Multiplied - HundredThousands * 100000 - TenThousands * 10000) / 1000;
-        Hundreds = (Multiplied - HundredThousands * 100000 - TenThousands * 10000 - Thousands * 1000) / 100;
-        Tens = (Multiplied - HundredThousands * 100000 - TenThousands * 10000 - Thousands * 1000 - Hundreds * 100) / 10;
-        Ones = Multiplied - HundredThousands * 100000 - TenThousands * 10000 - Thousands * 1000 - Hundreds * 100 - Tens * 10;
-        YAsss = PalindromeCheckerBig(HundredThousands, TenThousands, Thousands, Hundreds, Tens, Ones);
-        if (YAsss == 1)
+        HundredThousands = MultipliedNumbers / 100000;
+        TenThousands = (MultipliedNumbers - HundredThousands * 100000) / 10000;
+        Thousands = (MultipliedNumbers - HundredThousands * 100000 - TenThousands * 10000) / 1000;
+        Hundreds = (MultipliedNumbers - HundredThousands * 100000 - TenThousands * 10000 - Thousands * 1000) / 100;
+        Tens = (MultipliedNumbers - HundredThousands * 100000 - TenThousands * 10000 - Thousands * 1000 - Hundreds * 100) / 10;
+        Ones = MultipliedNumbers - HundredThousands * 100000 - TenThousands * 10000 - Thousands * 1000 - Hundreds * 100 - Tens * 10;
+        CheckerVariable = PalindromeCheckerBig(HundredThousands, TenThousands, Thousands, Hundreds, Tens, Ones);
+        if (CheckerVariable == 1)
         {
-            return Multiplied;
+            return MultipliedNumbers;
         }
         else
         {
@@ -120,6 +116,7 @@ int Extract(int Multiplied)
 }
 
 int PalindromeCheckerSmall(int TenThousands, int Thousands, int Hundreds, int Tens, int Ones)
+/*Checks for Palindromes in Numbers with 5 digits*/
 {
     if ((TenThousands == Ones) && (Thousands == Tens))
         return 1;
@@ -129,6 +126,7 @@ int PalindromeCheckerSmall(int TenThousands, int Thousands, int Hundreds, int Te
     }
 }
 int PalindromeCheckerBig(int HundredThousands, int TenThousands, int Thousands, int Hundreds, int Tens, int Ones)
+/*Checks for Palindromes in Numbers with 6 digits*/
 {
     if ((HundredThousands == Ones) && (TenThousands == Tens) && (Thousands == Hundreds))
         return 1;
@@ -137,8 +135,12 @@ int PalindromeCheckerBig(int HundredThousands, int TenThousands, int Thousands, 
         return 0;
     }
 }
-
-void Output(int Palindrome, int Product1, int Product2)
+void NoPalindrome(void)
 {
-    printf("The highest palindrome as a product of %d and %d is %d", Product1, Product2, Palindrome);
+    printf("No palindrome found!");
+    exit(EXIT_SUCCESS);
+}
+void Output(int PalindromeNumber, int Factor1, int Factor2)
+{
+    printf("The highest palindrome as a product of %d and %d is %d", Factor1, Factor2, PalindromeNumber);
 }
