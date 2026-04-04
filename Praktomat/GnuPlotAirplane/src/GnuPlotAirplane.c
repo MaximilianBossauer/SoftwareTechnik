@@ -22,7 +22,6 @@ void AirplanePlot(void)
         GnuPlotValue(ValueX, ValueY);
         i = i + 0.1;
     }
-    i = 10;
     while (i <= 18)
     {
         ValueX = i;
@@ -30,7 +29,6 @@ void AirplanePlot(void)
         GnuPlotValue(ValueX, ValueY);
         i = i + 0.1;
     }
-    i = 18;
     while (i <= 23)
     {
         ValueX = i;
@@ -38,7 +36,6 @@ void AirplanePlot(void)
         GnuPlotValue(ValueX, ValueY);
         i = i + 0.1;
     }
-    i = 23;
     while (i <= 25)
     {
         ValueX = i;
@@ -46,7 +43,6 @@ void AirplanePlot(void)
         GnuPlotValue(ValueX, ValueY);
         i = i + 0.1;
     }
-    i = 25;
     while (i <= 27)
     {
         ValueX = i;
@@ -54,7 +50,6 @@ void AirplanePlot(void)
         GnuPlotValue(ValueX, ValueY);
         i = i + 0.1;
     }
-    i = 27;
     while (i <= 28)
     {
         ValueX = i;
@@ -62,13 +57,12 @@ void AirplanePlot(void)
         GnuPlotValue(ValueX, ValueY);
         i = i + 0.1;
     }
-    i=28;
        while (i <= 30){
         ValueX = i;
         ValueY = 1 - exp(-(30-ValueX));
         GnuPlotValue(ValueX, ValueY);
         i = i + 0.1;
-    };
+    }
     while(i>=28){
          ValueX = i;
         ValueY = -1 + exp(-(30-ValueX));
