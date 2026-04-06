@@ -61,5 +61,6 @@ typedef struct FMS
 }FMS;
 
 void Generate_Time_Table(FMS * pFMS);
+void Generate_Distance_Table(FMS * pFMS);
 
 #endif

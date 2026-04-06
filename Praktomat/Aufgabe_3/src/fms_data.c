@@ -50,8 +50,10 @@ Airplane A380 = {"A380", "D-AIMA", LufthansaFlightPaths, sizeof(LufthansaFlightP
 Airplane A320 = {"A320", "D-AIAB", EuroWingsFlightPaths, sizeof(EuroWingsFlightPaths) / sizeof(FlightPath)};
 Airplane B747 = {"B747", "D-ABCD", TuiFlightPaths, sizeof(TuiFlightPaths) / sizeof(FlightPath)};
 
-Airline Lufthansa = {"Lufthansa", &A380, 1};
-Airline Eurowings = {"Eurowings", &A320, 1};
-Airline TUIFly = {"TUIfly", &B747, 1};
+const Airline Lufthansa = {"Lufthansa", &A380, 1};
+const Airline Eurowings = {"Eurowings", &A320, 1};
+const Airline TUIFly = {"TUIFly", &B747, 1};
 
-FMS BLABLA = {&Lufthansa, 1};
+Airline airlines[3] = {Lufthansa, Eurowings, TUIFly};
+
+FMS BLABLA = {airlines, 3};
