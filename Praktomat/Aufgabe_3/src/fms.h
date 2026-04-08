@@ -42,7 +42,7 @@ typedef struct FlightPath
 typedef struct Airplane
 {
     char airplaneName[20];
-    char airVehicleRegistration[20];
+    char airVehicleRegistration[20]; /*Array bigger than European Registration Codes to Accomodate e.g. American Codes*/
     struct FlightPath *pFlightPath;
     unsigned int cntFlightPath;
 }Airplane;
@@ -62,5 +62,6 @@ typedef struct FMS
 
 void Generate_Time_Table(FMS * pFMS);
 void Generate_Distance_Table(FMS * pFMS);
+void Generate_Duration_Table(FMS *pFMS);
 
 #endif

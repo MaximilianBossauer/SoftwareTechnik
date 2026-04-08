@@ -24,18 +24,18 @@ Airport Cologne = {"EDDK", "CGN", CologneLatitude, CologneLongitude, 92};
 Airport Stuttgart = {"EDDS", "STR", StuttgartLatitude, StuttgartLongitude, 389};
 
 FlightPath LufthansaFlightPaths[5] = {
-    {"LH 2147", &Munich, &Dusseldorf, {11, 30}, {14, 30}},
-    {"LH 2147", &Dusseldorf, &Berlin, {15, 30}, {16, 30}},
-    {"LH 2147", &Berlin, &Cologne, {18, 30}, {20, 30}},
-    {"LH 2147", &Cologne, &Munich, {20, 45}, {22, 00}},
-    {"LH 2147", &Munich, &Dusseldorf, {22, 30}, {23, 30}}};
+    {"LH 2147", &Munich, &Hamburg, {11, 30}, {14, 30}},
+    {"LH 2147", &Hamburg, &Frankfurt, {15, 30}, {16, 30}},
+    {"LH 2147", &Frankfurt, &Munich, {18, 30}, {20, 30}},
+    {"LH 2147", &Munich, &Hamburg, {20, 45}, {22, 00}},
+    {"LH 2147", &Hamburg, &Munich, {22, 30}, {23, 30}}};
 
 FlightPath EuroWingsFlightPaths[5] = {
-    {"EW 5953", &Hamburg, &Stuttgart, {8, 00}, {10, 00}},
-    {"EW 5953", &Stuttgart, &Berlin, {10, 15}, {13, 00}},
-    {"EW 5953", &Berlin, &Frankfurt, {13, 10}, {15, 00}},
-    {"EW 5953", &Frankfurt, &Hamburg, {15, 12}, {17, 00}},
-    {"EW 5953", &Hamburg, &Frankfurt, {22, 00}, {24, 00}},
+    {"EW 5953", &Munich, &Dusseldorf, {3,00}, {4,15}},
+    {"EW 5953", &Dusseldorf, &Berlin, {8,00}, {10,00}},
+    {"EW 5953", &Berlin, &Cologne, {10,12}, {13,15}},
+    {"EW 5953", &Cologne, &Munich, {18,00}, {20,30}},
+    {"EW 5953", &Munich, &Dusseldorf, {21,45}, {23,30}},
 };
 
 FlightPath TuiFlightPaths[5] = {
@@ -51,9 +51,9 @@ Airplane A320 = {"A320", "D-AIAB", EuroWingsFlightPaths, sizeof(EuroWingsFlightP
 Airplane B747 = {"B747", "D-ABCD", TuiFlightPaths, sizeof(TuiFlightPaths) / sizeof(FlightPath)};
 
 const Airline Lufthansa = {"Lufthansa", &A380, 1};
-const Airline Eurowings = {"Eurowings", &A320, 1};
+const Airline EuroWings = {"EuroWings", &A320, 1};
 const Airline TUIFly = {"TUIFly", &B747, 1};
 
-Airline airlines[3] = {Lufthansa, Eurowings, TUIFly};
+Airline airlines[3] = {Lufthansa, EuroWings, TUIFly};
 
-FMS BLABLA = {airlines, 3};
+FMS FlightManagementSystem = {airlines, 3};

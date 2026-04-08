@@ -1,11 +1,13 @@
 #include "fms.h"
 
-extern FMS BLABLA;
 
 
 int main(void)
 {
-    Generate_Time_Table(&BLABLA);
-    Generate_Distance_Table(&BLABLA);
-    return 0;
+    extern FMS FlightManagementSystem;
+    Generate_Time_Table(&FlightManagementSystem);
+    Generate_Duration_Table(&FlightManagementSystem);
+    Generate_Distance_Table(&FlightManagementSystem);
+
+    return EXIT_SUCCESS;
 }
