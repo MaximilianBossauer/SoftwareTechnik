@@ -1,4 +1,5 @@
 #include "fms.h"
+
 double DurationCalculation(Time *DepartureTime, Time *ArrivalTime);
 double DistanceCalculation(Airport *departureAirport, Airport *ArrivalAirport);
 double calculateDegree(Coordinate Coordinates);
@@ -6,6 +7,7 @@ double sinDeg(double degree);
 double cosDeg(double degree);
 
 void Generate_Time_Table(FMS *pFMS)
+/*Generates a Timetable grouped by Airlines*/
 {
     printf("%10s|%10s|%4s|%4s|%9s|%8s|%8s\n",
            "Airline", "Flight No.", "from", "to", "Departure", "Arrival", "Airplane");
@@ -38,6 +40,7 @@ void Generate_Time_Table(FMS *pFMS)
 }
 
 void Generate_Duration_Table(FMS *pFMS)
+/*Generates Duration Tables for each Aircraft grouped by Airlines*/
 {
     for (int AirlineCounter = 0; AirlineCounter < pFMS->cntAirline; AirlineCounter++)
     {
@@ -86,7 +89,7 @@ double DurationCalculation(Time *DepartureTime, Time *ArrivalTime)
     int ArrivalMinutes = ArrivalTime->hour * 60 + ArrivalTime->minute;
 
     if (ArrivalMinutes > DepartureMinutes)
-    /*Checks whether the flight crosses midnight as the calculation is different then*/
+    /*Checks if the flight passes Midnight and adds 24 Hours to avoid negative durations*/
     {
         FlightTotalMinutes = ArrivalMinutes - DepartureMinutes;
     }
@@ -99,6 +102,7 @@ double DurationCalculation(Time *DepartureTime, Time *ArrivalTime)
 }
 
 void Generate_Distance_Table(FMS *pFMS)
+/*Generates Distance Tables for each Aircraft grouped by Airlines*/
 {
 
     for (int AirlineCounter = 0; AirlineCounter < pFMS->cntAirline; AirlineCounter++)
@@ -128,14 +132,13 @@ void Generate_Distance_Table(FMS *pFMS)
                        flightpath->pArrivalAirport->iata,
                        Distance);
             }
-            
+
             /*Prints the total flight time for each aircraft seperately*/
             printf("Total flight distance for %s %s is %.2f\n", airline->airlineName, airplane->airplaneName, TotalDistance);
         }
     }
 }
 double DistanceCalculation(Airport *departureAirport, Airport *ArrivalAirport)
-/*Calculation of Flight Distance using the formula of the curvature of the earth*/
 {
     double deplat = calculateDegree(departureAirport->latitude);
     double deplon = calculateDegree(departureAirport->longitude);
